@@ -1,0 +1,79 @@
+$fg-light: #ccc;
+$fg-dark: #333;
+
+$bg-created: #d9edf7;
+$bg-inProgress: #fcf8e3;
+$bg-resolved: #dff0d8;
+
+.patientInfo {
+
+  padding: 20px;
+  border-bottom: 1px solid $fg-dark;
+
+  h1, h2, h3 {
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  div span {
+    font-size: 20px;
+  }
+
+}
+
+.statuses {
+
+  .created {
+    background: $bg-created;
+  }
+
+  .inProgress {
+    background: $bg-inProgress;
+  }
+
+  .resolved {
+    background: $bg-resolved;
+  }
+
+  .status {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .row {
+
+    border-bottom: 1px solid $fg-dark;
+
+    h1 {
+      display: inline-block;
+    }
+
+    .glyphicon {
+      display: inline;
+      font-size: 2em;
+      text-align: middle;
+    }
+
+  }
+
+  ul {
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+
+      margin-bottom: 10px;
+
+      span {
+        padding: 2px 5px;
+        border: 1px solid $fg-light;
+        border-radius: 2px;
+      }
+
+    }
+
+  }
+
+}
