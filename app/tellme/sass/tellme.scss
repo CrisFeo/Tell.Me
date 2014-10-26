@@ -1,0 +1,109 @@
+$fg-light: #ccc;
+$fg-dark: #333;
+
+$bg-created: #E6F4F9;
+$bg-inProgress: #FFFFCC;
+$bg-resolved: #dff0d8;
+
+/* State Colors */
+.created { background: $bg-created; }
+.inProgress { background: $bg-inProgress; }
+.resolved { background: $bg-resolved; }
+
+.patientInfo {
+
+  padding: 10px;
+  border-bottom: 1px solid $fg-dark;
+
+  div span {
+    font-size: 20px;
+  }
+
+  h1, h2, h3 {
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 0;
+  }
+
+  h2 {
+    span {
+      font-size: 30px;
+      font-weight: bolder;
+      color: $fg-dark;
+    }
+  }
+
+  img {
+    width: 80px;
+    height: 80px;
+  }
+
+}
+
+.statuses {
+
+  .status {
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+
+  .row {
+
+    .icon {
+      margin-right: 10px;
+      height: 35px;
+      vertical-align: sub;
+      opacity: 0.6;
+    }
+
+    .task {
+      border-bottom: 1px solid $fg-light;
+
+      &.col-lg-6 {
+        border-right: 1px solid $fg-dark;
+      }
+
+    }
+
+    h1, h3 {
+      display: inline-block;
+      margin-top: 10px;
+    }
+
+    h3 {
+      font-size: 20px;
+      font-weight: normal;
+      margin-left: 5px;
+    }
+
+  }
+
+  ul {
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+
+      margin-bottom: 10px;
+
+      span {
+        padding: 2px 5px;
+        border: 1px solid $fg-light;
+        border-radius: 4px;
+      }
+
+    }
+
+  }
+
+}
+
+.watermark {
+  position: fixed;
+  right: 20px;
+  bottom: 0;
+  opacity: 0.5;
+  width: 100px;
+}

@@ -28,8 +28,8 @@ if (Meteor.isClient) {
   }
 
   // Events
-  var welcomeEvent = {type: 'welcome', status: start, text: 'Welcome to our ED, a Dr. will be with you shortly'};
-  var dischargeEvent = {type: 'discharge', status: end, text: 'Discharge pending, have a nice day'};
+  var welcomeEvent = {type: 'Room Assigned', status: start, text: 'Welcome to our ED, a Dr. will be with you shortly', list: []};
+  var dischargeEvent = {type: 'Discharge', status: end, text: 'Discharge pending, have a nice day', list: []};
 
   Session.setDefault("patient", "");
 
@@ -53,40 +53,41 @@ if (Meteor.isClient) {
       else {
         return 0;
       }
-
     }
   })
 
   Template.control.events({
     'click button#newPatient': function() {
       Meteor.call('removeAll');
-      // Session.set("patient", "John Smith");
       Patients.insert({name: "John Smith"});
-      Meteor.call('updateEvent', 'welcome', start, 'Welcome to our ED, a Dr. will be with you shortly');
+      Meteor.call('updateEvent', 'Welcome', start, 'A member of your clinical team will be with you shortly', '', []);
     },
     'click button#labsOrdered': function() {
-      updateEvent('Labs', start, 'Waiting for tech');
+      updateEvent('Labs', start, 'Waiting for collection', '15 minutes', []);
     },
     'click button#labsSent': function() {
-      updateEvent('Labs', middle, 'Waiting for results');
+      updateEvent('Labs', middle, 'Waiting for results', '1 hour 20 minutes', []);
     },
     'click button#labResultsReceived': function() {
-      updateEvent('Labs', end, 'Waiting for physician');
+      updateEvent('Labs', end, 'Results are starting to arrive', '45 minutes', []);
     },
     'click button#imagingOrdered': function() {
-      updateEvent('Imaging', start, 'Waiting for tech');
+      updateEvent('Imaging', start, 'Waiting for transportation', '5 minutes', []);
     },
     'click button#imagingTaken': function() {
-      updateEvent('Imaging', middle, 'Waiting for review');
+      updateEvent('Imaging', middle, 'Awaiting review', '1 hour', []);
     },
     'click button#imagingReviewed': function() {
-      updateEvent('Imaging', end, 'Waiting for physician');
+      updateEvent('Imaging', end, 'Under review', '30 minutes', []);
     },
     'click button#treatmentOrdered': function() {
-      updateEvent('Treatment', end, 'Treatment Requested');
+      updateEvent('Treatment', "", 'Ordered', '5 minutes', []);
     },
     'click button#consultOrdered': function() {
-      updateEvent('Consultation', end, 'Consult Requested');
+      updateEvent('Consultation', "", 'Requested', '1 hour 10 minutes', [/*
+        {label: 'Nephrologist Requested', status: ""},
+        {label: 'General Surgery Requested', status: ""}
+      */]);
     },
     'click button#discharge': function() {
       Session.set("patient", "");
@@ -94,10 +95,10 @@ if (Meteor.isClient) {
     }
   });
 
-  var updateEvent = function(type, status, text) {
+  var updateEvent = function(type, status, text, time, list) {
     if (Patients.findOne({})) {
       removeWelcomeEvent();
-      Meteor.call('updateEvent', type, status, text);
+      Meteor.call('updateEvent', type, status, text, time, list);
     }
   }
 
@@ -114,13 +115,13 @@ if (Meteor.isServer) {
 
   Meteor.methods({
     removeWelcomeEvent: function() {
-      var welcomeEvent = Items.findOne({type: 'welcome'})
+      var welcomeEvent = Items.findOne({type: 'Welcome'})
       if (welcomeEvent) {
         Items.remove(welcomeEvent._id);
       }
     },
-    updateEvent: function(type, status, text) {
-      Items.upsert({type: type}, {$set: {status: status, text: text}})
+    updateEvent: function(type, status, text, time, list) {
+      Items.upsert({type: type}, {$set: {status: status, text: text, time: time, list: list}})
     },
     removeAll: function() {
       Items.remove({});

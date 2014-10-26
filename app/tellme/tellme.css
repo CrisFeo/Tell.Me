@@ -1,37 +1,49 @@
-/* CSS declarations go here */
 /* State Colors */
 .created {
-  background: #d9edf7; }
+  background: #E6F4F9; }
 
 .inProgress {
-  background: #fcf8e3; }
+  background: #FFFFCC; }
 
 .resolved {
   background: #dff0d8; }
 
 .patientInfo {
-  padding: 20px;
+  padding: 10px;
   border-bottom: 1px solid #333; }
-  .patientInfo h1, .patientInfo h2, .patientInfo h3 {
-    display: inline-block;
-    margin-right: 10px; }
   .patientInfo div span {
     font-size: 20px; }
+  .patientInfo h1, .patientInfo h2, .patientInfo h3 {
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 0; }
+  .patientInfo h2 span {
+    font-size: 30px;
+    font-weight: bolder;
+    color: #333; }
+  .patientInfo img {
+    width: 80px;
+    height: 80px; }
 
 .statuses .status {
   font-size: 25px;
   margin-bottom: 10px; }
-.statuses .row {
-  border-bottom: 1px solid #333; }
-  .statuses .row .icon {
-    margin-right: 10px;
-    height: 35px;
-    vertical-align: sub;
-    opacity: 0.6; }
-  .statuses .row .col-lg-6 {
+.statuses .row .icon {
+  margin-right: 10px;
+  height: 35px;
+  vertical-align: sub;
+  opacity: 0.6; }
+.statuses .row .task {
+  border-bottom: 1px solid #ccc; }
+  .statuses .row .task.col-lg-6 {
     border-right: 1px solid #333; }
-  .statuses .row h1 {
-    display: inline-block; }
+.statuses .row h1, .statuses .row h3 {
+  display: inline-block;
+  margin-top: 10px; }
+.statuses .row h3 {
+  font-size: 20px;
+  font-weight: normal;
+  margin-left: 5px; }
 .statuses ul {
   margin: 0;
   padding: 0;
@@ -47,4 +59,5 @@
   position: fixed;
   right: 20px;
   bottom: 0;
-  opacity: 0.5; }
+  opacity: 0.5;
+  width: 100px; }
