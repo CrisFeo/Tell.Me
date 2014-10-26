@@ -1,0 +1,155 @@
+<head>
+  <title>Tell.Me</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+</body>
+
+<template name="Layout">
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Room 5</a>
+      </div>
+    </div>
+  </nav>
+  {{> yield}}
+</template>
+
+<template name="item">
+  <li class="event {{ status }}">
+    {{#if image}}
+      <img class="icon" src="{{ image }}" />
+    {{/if}}
+    <h1>{{ type }}</h1>
+    <ul class="status">
+    {{ text }}
+<!--       {{#each}}
+        <li>{{ hi }}</li>
+      {{/each}} -->
+    </ul>
+  </li>
+</template>
+
+<template name="items">
+  <ul class="list-unstyled">
+    {{#each items}}
+      {{> item }}
+    {{/each}}
+  </ul>
+</template>
+
+<template name="control">
+  <div class="container">
+    <h2>Actions</h2>
+    <ul class="list-unstyled">
+      <li>
+        <button id="newPatient" type="button" class="btn btn-default">New Patient</button>
+      </li>
+      <li>
+        <button id="labsOrdered" type="button" class="btn btn-default">Labs Ordered</button>
+      </li>
+      <li>
+        <button id="labsSent" type="button" class="btn btn-default">Labs Sent</button>
+      </li>
+      <li>
+        <button id="labResultsReceived" type="button" class="btn btn-default">Lab Results Received</button>
+      </li>
+      <li>
+        <button id="imagingOrdered" type="button" class="btn btn-default">Imaging Ordered</button>
+      </li>
+      <li>
+        <button id="imagingTaken" type="button" class="btn btn-default">Imaging Taken</button>
+      </li>
+      <li>
+        <button id="imagingReviewed" type="button" class="btn btn-default">Imaging Reviewed</button>
+      </li>
+      <li>
+        <button id="treatmentOrdered" type="button" class="btn btn-default">Treatment Ordered</button>
+      </li>
+      <li>
+        <button id="consultOrdered" type="button" class="btn btn-default">Consult Ordered</button>
+      </li>
+      <li>
+        <button id="discharge" type="button" class="btn btn-default">Discharge</button>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<template name="Home">
+  Homey
+</template>
+
+<template name="patient">
+  <div class="container-fluid">
+
+    <div class="row">
+      <div class="col-lg-12">
+        {{#if patient}}
+          <h1>Welcome {{ patient.name }} to the Turkey Sandwich Emergency Department</h1>
+          <h2>Your Clinical Team is: <small>Jane Doe, MD</small></h2>
+          <img class="pull-right" src="http://placehold.it/100x100" />
+        {{else}}
+          <h1>Awaiting next patient</h1>
+        {{/if}}
+      </div>
+    </div>
+
+    <div class="row statuses">
+      <div class="col-lg-12">
+        <div class="row">
+        {{> items}}
+
+<!--           <div class="col-lg-6 created">
+            <img class="icon" src="img/beaker.png" />
+            <h1>Labs</h1>
+            <div class="status">Waiting for tech</div>
+          </div>
+          <div class="col-lg-6 inProgress">
+            <img class="icon" src="img/camera.png" />
+            <h1>Imaging</h1>
+            <div class="status">Waiting for review</div>
+          </div> -->
+        </div>
+        <!-- <div class="row">
+          <div class="col-lg-6">
+            <img class="icon" src="img/pill.png" />
+            <h1>Treatment</h1>
+            <ul class="status">
+              <li >Fluids</li>
+              <li>Pain Pills</li>
+              <li>Antibiotics</li>
+            </ul>
+          </div>
+          <div class="col-lg-6">
+            <img class="icon" src="img/stethoscope.png" />
+            <h1>Consultation</h1>
+            <ul class="status">
+              <li>General Surgery <span class="created">Consult Requested</span></li>
+              <li>Nephrologist <span class="resolved">Consult Resolved</span></li>
+            </ul>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+    <img src="img/logo.png" class="watermark" />
+
+  </div>
+</template>
+
+<template name="provider">
+  {{> control}}
+</template>

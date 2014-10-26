@@ -1,0 +1,50 @@
+/* CSS declarations go here */
+/* State Colors */
+.created {
+  background: #d9edf7; }
+
+.inProgress {
+  background: #fcf8e3; }
+
+.resolved {
+  background: #dff0d8; }
+
+.patientInfo {
+  padding: 20px;
+  border-bottom: 1px solid #333; }
+  .patientInfo h1, .patientInfo h2, .patientInfo h3 {
+    display: inline-block;
+    margin-right: 10px; }
+  .patientInfo div span {
+    font-size: 20px; }
+
+.statuses .status {
+  font-size: 25px;
+  margin-bottom: 10px; }
+.statuses .row {
+  border-bottom: 1px solid #333; }
+  .statuses .row .icon {
+    margin-right: 10px;
+    height: 35px;
+    vertical-align: sub;
+    opacity: 0.6; }
+  .statuses .row .col-lg-6 {
+    border-right: 1px solid #333; }
+  .statuses .row h1 {
+    display: inline-block; }
+.statuses ul {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+  .statuses ul li {
+    margin-bottom: 10px; }
+    .statuses ul li span {
+      padding: 2px 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px; }
+
+.watermark {
+  position: fixed;
+  right: 20px;
+  bottom: 0;
+  opacity: 0.5; }
