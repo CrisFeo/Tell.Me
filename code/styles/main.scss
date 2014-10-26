@@ -5,6 +5,11 @@ $bg-created: #d9edf7;
 $bg-inProgress: #fcf8e3;
 $bg-resolved: #dff0d8;
 
+/* State Colors */
+.created { background: $bg-created; }
+.inProgress { background: $bg-inProgress; }
+.resolved { background: $bg-resolved; }
+
 .patientInfo {
 
   padding: 20px;
@@ -23,20 +28,8 @@ $bg-resolved: #dff0d8;
 
 .statuses {
 
-  .created {
-    background: $bg-created;
-  }
-
-  .inProgress {
-    background: $bg-inProgress;
-  }
-
-  .resolved {
-    background: $bg-resolved;
-  }
-
   .status {
-    font-size: 20px;
+    font-size: 25px;
     margin-bottom: 10px;
   }
 
@@ -44,14 +37,19 @@ $bg-resolved: #dff0d8;
 
     border-bottom: 1px solid $fg-dark;
 
-    h1 {
-      display: inline-block;
+    .icon {
+      margin-right: 10px;
+      height: 35px;
+      vertical-align: sub;
+      opacity: 0.6;
     }
 
-    .glyphicon {
-      display: inline;
-      font-size: 2em;
-      text-align: middle;
+    .col-lg-6 {
+      border-right: 1px solid $fg-dark;
+    }
+
+    h1 {
+      display: inline-block;
     }
 
   }
@@ -69,11 +67,18 @@ $bg-resolved: #dff0d8;
       span {
         padding: 2px 5px;
         border: 1px solid $fg-light;
-        border-radius: 2px;
+        border-radius: 4px;
       }
 
     }
 
   }
 
+}
+
+.watermark {
+  position: fixed;
+  right: 20px;
+  bottom: 0;
+  opacity: 0.5;
 }
